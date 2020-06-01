@@ -16,10 +16,16 @@ namespace MinMaxIntConcat
             {
                 return 1;
             }
-            var pad_length = x.Length > y.Length ? x.Length : y.Length;
-            x = x.PadRight(pad_length, '0');
-            y = y.PadRight(pad_length, '0');
-            var numberOfIterations = x.Length < y.Length ? x.Length : y.Length;
+            var lengthDifference = x.Length - y.Length;
+            // Assume that x is shorter
+            int numberOfIterations = x.Length;
+
+            if (lengthDifference > 0)
+            {
+                // If actually y is shorter, then swap
+                numberOfIterations = y.Length;
+            }
+
             for (int i = 0; i < numberOfIterations; ++i)
             {
                 if (x[i] > y[i])
@@ -33,13 +39,13 @@ namespace MinMaxIntConcat
                 }
             }
 
-            if (x.Length < y.Length)
+            if (lengthDifference > 0)
             {
-                return 1;
-            }
+                if (x[numberOfIterations] > x[numberOfIterations-1])
+                {
+                    return 1;
+                }
 
-            if (x.Length > y.Length)
-            {
                 return -1;
             }
 
