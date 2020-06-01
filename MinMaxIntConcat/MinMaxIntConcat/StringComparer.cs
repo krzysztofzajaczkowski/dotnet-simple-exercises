@@ -49,6 +49,16 @@ namespace MinMaxIntConcat
                 return -1;
             }
 
+            if (lengthDifference < 0)
+            {
+                if (y[numberOfIterations] > y[numberOfIterations - 1])
+                {
+                    return -1;
+                }
+
+                return 1;
+            }
+
             return 0;
         }
 
