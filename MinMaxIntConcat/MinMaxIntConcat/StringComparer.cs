@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Xml.Schema;
 
 namespace MinMaxIntConcat
 {
@@ -28,6 +29,7 @@ namespace MinMaxIntConcat
 
             for (int i = 0; i < numberOfIterations; ++i)
             {
+                // Compare the common part
                 if (x[i] > y[i])
                 {
                     return 1;
@@ -38,25 +40,29 @@ namespace MinMaxIntConcat
                     return -1;
                 }
             }
-
-            if (lengthDifference > 0)
-            {
-                if (x[numberOfIterations] > x[numberOfIterations-1])
-                {
-                    return 1;
-                }
-
-                return -1;
-            }
-
+            // If common parts are equal, compare digits of a longer number
+            // Assume that x is longer
+            string longerString = x;
+            int isBigger = 1;
             if (lengthDifference < 0)
             {
-                if (y[numberOfIterations] > y[numberOfIterations - 1])
+                // If actually y is longer
+                longerString = y;
+                // Need to reverse the return value
+                isBigger = -1;
+            }
+
+            for (int i = numberOfIterations; i < longerString.Length; ++i)
+            {
+                if (longerString[i] > longerString[i - 1])
                 {
-                    return -1;
+                    return isBigger;
                 }
 
-                return 1;
+                if (longerString[i] < longerString[i - 1])
+                {
+                    return -isBigger;
+                }
             }
 
             return 0;
