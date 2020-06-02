@@ -39,13 +39,13 @@ namespace MinMaxIntConcat
 
                 int? maxValue = null;
                 int? minValue = null;
-                if (int.TryParse(string.Join("", list), out var value))
+                if (int.TryParse(list.ConcatElements(), out var value))
                 {
                     maxValue = value;
                 }
 
                 list.Reverse();
-                if (int.TryParse(string.Join("", list), out value))
+                if (int.TryParse(list.ConcatElements(), out value))
                 {
                     minValue = value;
                 }
