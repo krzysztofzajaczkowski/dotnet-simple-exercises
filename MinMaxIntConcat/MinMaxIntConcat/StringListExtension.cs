@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 namespace MinMaxIntConcat
 {
@@ -17,6 +18,11 @@ namespace MinMaxIntConcat
                 }
             }
             list.Add(element);
+        }
+
+        public static string ConcatElements(this List<string> list)
+        {
+            return string.Join("", list);
         }
     }
 }
