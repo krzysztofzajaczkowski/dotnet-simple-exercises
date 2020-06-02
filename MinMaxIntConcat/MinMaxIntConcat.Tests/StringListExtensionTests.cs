@@ -1,129 +1,50 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using NUnit.Framework;
 
 namespace MinMaxIntConcat.Tests
 {
-    public class Tests
+    public class StringListExtensionTests
     {
-        [SetUp]
-        public void Setup()
-        {
-        }
 
-        [Test]
-        public void WhenInserting50And9And2And1_Concat_ShouldBe95021()
+        [TestCase("12509", "50", "9", "2", "1")]
+        [TestCase("333333313", "33333331", "3")]
+        [TestCase("333333313", "3", "33333331")]
+        [TestCase("11112121", "11","112","121")]
+        [TestCase("11112121", "112","11","121")]
+        [TestCase("55355455", "554", "55", "553")]
+        [TestCase("555556", "5", "556", "55")]
+        public void ConcatElements_ShouldBe_MinConcat(string minConcat, params string[] numbers)
         {
-            var list = new List<string>();
             var comparer = new StringComparer();
-            list.InsertSorted("50", comparer.Compare);
-            list.InsertSorted("9", comparer.Compare);
-            list.InsertSorted("2", comparer.Compare);
-            list.InsertSorted("1", comparer.Compare);
-            Assert.AreEqual("95021", list.ConcatElements());
-        }
-
-        [Test]
-        public void WhenInserting50And9And2And1_ReverseConcat_ShouldBe12509()
-        {
             var list = new List<string>();
-            var comparer = new StringComparer();
-            list.InsertSorted("50", comparer.Compare);
-            list.InsertSorted("9", comparer.Compare);
-            list.InsertSorted("2", comparer.Compare);
-            list.InsertSorted("1", comparer.Compare);
+            for (int i = 0; i < numbers.Length; i++)
+            {
+                list.InsertSorted(numbers[i], comparer.Compare);
+            }
             list.Reverse();
-            Assert.AreEqual("12509", list.ConcatElements());
+            Assert.AreEqual(minConcat, list.ConcatElements());
+
         }
 
-        [Test]
-        public void WhenInserting33333331And3_Concat_ShouldBe333333331()
+        [TestCase("95021","50", "9", "2", "1")]
+        [TestCase("333333331", "33333331", "3")]
+        [TestCase("333333331", "3", "33333331")]
+        [TestCase("12111211", "11", "112", "121")]
+        [TestCase("12111211", "112", "11", "121")]
+        [TestCase("55554553", "554", "55", "553")]
+        [TestCase("556555", "5", "556", "55")]
+        public void ConcatElements_ShouldBe_MaxConcat(string maxConcat, params string[] numbers)
         {
-            var list = new List<string>();
             var comparer = new StringComparer();
-            list.InsertSorted("33333331", comparer.Compare);
-            list.InsertSorted("3", comparer.Compare);
-            Assert.AreEqual("333333331", list.ConcatElements());
-        }
+            var list = new List<string>();
+            for (int i = 0; i < numbers.Length; i++)
+            {
+                list.InsertSorted(numbers[i], comparer.Compare);
+            }
+            Assert.AreEqual(maxConcat, list.ConcatElements());
 
-        [Test]
-        public void WhenInserting33333331And3_ReverseConcat_ShouldBe333333313()
-        {
-            var list = new List<string>();
-            var comparer = new StringComparer();
-            list.InsertSorted("33333331", comparer.Compare);
-            list.InsertSorted("3", comparer.Compare);
-            list.Reverse();
-            Assert.AreEqual("333333313", list.ConcatElements());
-        }
-
-        [Test]
-        public void WhenInserting11And112And121_Concat_ShouldBe12111211()
-        {
-            var list = new List<string>();
-            var comparer = new StringComparer();
-            list.InsertSorted("11", comparer.Compare);
-            list.InsertSorted("112", comparer.Compare);
-            list.InsertSorted("121", comparer.Compare);
-            Assert.AreEqual("12111211", list.ConcatElements());
-        }
-
-        [Test]
-        public void WhenInserting11And112And121_ReverseConcat_ShouldBe11112121()
-        {
-            var list = new List<string>();
-            var comparer = new StringComparer();
-            list.InsertSorted("11", comparer.Compare);
-            list.InsertSorted("112", comparer.Compare);
-            list.InsertSorted("121", comparer.Compare);
-            list.Reverse();
-            Assert.AreEqual("11112121", list.ConcatElements());
-        }
-
-        [Test]
-        public void WhenInserting554And55And553_Concat_ShouldBe55554553()
-        {
-            var list = new List<string>();
-            var comparer = new StringComparer();
-            list.InsertSorted("554", comparer.Compare);
-            list.InsertSorted("55", comparer.Compare);
-            list.InsertSorted("553", comparer.Compare);
-            Assert.AreEqual("55554553", list.ConcatElements());
-        }
-
-        [Test]
-        public void WhenInserting554And55And553_ReverseConcat_ShouldBe55554553()
-        {
-            var list = new List<string>();
-            var comparer = new StringComparer();
-            list.InsertSorted("554", comparer.Compare);
-            list.InsertSorted("55", comparer.Compare);
-            list.InsertSorted("553", comparer.Compare);
-            list.Reverse();
-            Assert.AreEqual("55355455", list.ConcatElements());
-        }
-
-        [Test]
-        public void WhenInserting5And556And55_Concat_ShouldBe556555()
-        {
-            var list = new List<string>();
-            var comparer = new StringComparer();
-            list.InsertSorted("5", comparer.Compare);
-            list.InsertSorted("556", comparer.Compare);
-            list.InsertSorted("55", comparer.Compare);
-            Assert.AreEqual("556555", list.ConcatElements());
-        }
-
-        [Test]
-        public void WhenInserting5And556And55_ReverseConcat_ShouldBe555556()
-        {
-            var list = new List<string>();
-            var comparer = new StringComparer();
-            list.InsertSorted("5", comparer.Compare);
-            list.InsertSorted("556", comparer.Compare);
-            list.InsertSorted("55", comparer.Compare);
-            list.Reverse();
-            Assert.AreEqual("555556", list.ConcatElements());
         }
     }
 }
