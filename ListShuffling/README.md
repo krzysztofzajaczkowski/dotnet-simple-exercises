@@ -35,12 +35,13 @@ All parameters are stored in appsettings.json file. Only one of these shuffle ty
 
 CSV and TXT files must have 2 lines, each contains one list, where elements delimiter is one of:
  ``,\t;<space>``
+ 
 JSON file template looks like this:
 ```
-{
+[
 	["a","b","c","d"],
 	[5,4,3,2,1]
-}
+]
 ```
 
 ## Usage
