@@ -10,7 +10,7 @@
                 fileHandler = new JsonFileHandler();
             }
 
-            if (fileType == FileTypeEnum.CSV)
+            if (fileType == FileTypeEnum.CSV || fileType == FileTypeEnum.TXT)
             {
                 fileHandler = new CsvFileHandler();
             }

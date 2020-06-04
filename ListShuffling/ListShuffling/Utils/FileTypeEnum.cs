@@ -3,6 +3,7 @@
     public enum FileTypeEnum
     {
         JSON,
-        CSV
+        CSV,
+        TXT
     }
 }
