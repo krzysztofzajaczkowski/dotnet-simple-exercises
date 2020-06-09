@@ -25,7 +25,7 @@ namespace SquareSequenceAnalyzer
                 {
                     Console.WriteLine(compoundedNumbers.ArePowerOf(baseNumbers, 2)
                         ? "First list squared is equal to second list!"
-                        : "First list not squared is equal to second list!");
+                        : "First list squared is not equal to second list!");
                 }
                 else
                 {
