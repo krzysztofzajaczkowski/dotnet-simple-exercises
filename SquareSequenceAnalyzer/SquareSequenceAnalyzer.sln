@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29926.136
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SquareSequenceAnalyzer", "SquareSequenceAnalyzer\SquareSequenceAnalyzer.csproj", "{F8245E2A-C8DC-4127-B754-B38C044B10FE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SquareSequenceAnalyzer.Tests", "SquareSequenceAnalyzer.Tests\SquareSequenceAnalyzer.Tests.csproj", "{9AAEEB05-0B3F-4D9E-BFF5-03CDFA6716FD}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F8245E2A-C8DC-4127-B754-B38C044B10FE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F8245E2A-C8DC-4127-B754-B38C044B10FE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F8245E2A-C8DC-4127-B754-B38C044B10FE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F8245E2A-C8DC-4127-B754-B38C044B10FE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9AAEEB05-0B3F-4D9E-BFF5-03CDFA6716FD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9AAEEB05-0B3F-4D9E-BFF5-03CDFA6716FD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9AAEEB05-0B3F-4D9E-BFF5-03CDFA6716FD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9AAEEB05-0B3F-4D9E-BFF5-03CDFA6716FD}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {054F0C55-40AC-47CE-98C5-8A2B260D971C}
+	EndGlobalSection
+EndGlobal
