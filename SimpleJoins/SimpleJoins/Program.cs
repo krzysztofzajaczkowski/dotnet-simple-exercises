@@ -48,7 +48,28 @@ namespace SimpleJoins
     {
         static void Main(string[] args)
         {
-            
+            var format = "{0}{1}{2}";
+            var warehouse = new DataWarehouse();
+
+            var items = warehouse.GetData<Item>();
+            var purchases = warehouse.GetData<Purchase>();
+
+            var joined = items.Join(purchases,
+                i => i.ItemId,
+                p => p.ItemId,
+                (i, p) => new
+                {
+                    i.ItemId,
+                    i.ItemName,
+                    p.PurchaseQuantity
+                }).OrderBy(j => j.ItemId).ToList();
+
+            Console.WriteLine($"Item ID{"Item Name",13}{"Purchase Quantity",22}");
+            Console.WriteLine(new string('-', 42));
+            joined.ForEach(j =>
+                Console.WriteLine(format, j.ItemId.ToString().PadRight(12), j.ItemName.PadRight(19), j.PurchaseQuantity));
+            Console.WriteLine(new string('-', 42));
+
         }
     }
 }
