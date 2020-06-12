@@ -8,27 +8,29 @@ namespace FizzBuzz
 {
     class Program
     {
+
+        public static void CheckFikuMiku(int n)
+        {
+            var stringBuilder = new StringBuilder();
+            if (n % 3 == 0)
+            {
+                stringBuilder.Append("Fiku");
+            }
+            if (n % 5 == 0)
+            {
+                stringBuilder.Append("Miku");
+            }
+
+            if (stringBuilder.Length == 0)
+            {
+                stringBuilder.Append(n);
+            }
+
+            Console.WriteLine(stringBuilder);
+        }
         static void Main(string[] args)
         {
-            Enumerable.Range(1, 100).ToList().ForEach(n =>
-            {
-                var stringBuilder = new StringBuilder();
-                if (n % 3 == 0)
-                {
-                    stringBuilder.Append("Fiku");
-                }
-                if (n % 5 == 0)
-                {
-                    stringBuilder.Append("Miku");
-                }
-
-                if (stringBuilder.Length == 0)
-                {
-                    stringBuilder.Append(n);
-                }
-
-                Console.WriteLine(stringBuilder);
-            });
+            Enumerable.Range(1, 100).ToList().ForEach(CheckFikuMiku);
         }
     }
 }
