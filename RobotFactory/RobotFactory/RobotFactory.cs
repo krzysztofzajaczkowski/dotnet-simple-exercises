@@ -40,6 +40,7 @@ namespace RobotFactory
         private string GenerateNewName(string pattern)
         {
             var builder = new StringBuilder();
+            var timeout = 0;
             while (!Regex.IsMatch(builder.ToString(), pattern) || CreatedRobotsNames.Contains(builder.ToString()))
             {
                 builder.Clear();
@@ -47,6 +48,11 @@ namespace RobotFactory
                     .Select(s => s[_random.Next(s.Length)])));
                 builder.Append(string.Concat(Enumerable.Repeat(_availableNumbers, 3)
                     .Select(s => s[_random.Next(s.Length)])));
+                ++timeout;
+                if (timeout > 10000)
+                {
+                    throw new Exception("Couldn't create another unique name!");
+                }
             }
 
             var name = builder.ToString();
