@@ -33,7 +33,7 @@ namespace RobotFactory
             Console.WriteLine(robots[numberOfRobots - 1].ToString());
 
             Console.WriteLine($"\nAfter creating {numberOfRobots} robots, and resetting two of these, total number of stored identifiers should be {numberOfRobots+2}");
-            Console.WriteLine($"Total number of stored identifiers is {factory.CreatedRobotsNames.Count}");
+            Console.WriteLine($"Total number of stored identifiers is {factory.CreatedNamesCount}");
 
         }
     }

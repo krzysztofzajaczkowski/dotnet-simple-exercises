@@ -13,7 +13,7 @@ namespace RobotFactory
         private static RobotFactory _instance;
 
         private static Random _random;
-        public HashSet<string> CreatedRobotsNames { get; } = new HashSet<string>();
+        private readonly HashSet<string> _createdRobotsNames = new HashSet<string>();
 
         private readonly string _availableLetters =
             string.Concat(Enumerable.Range('A', 'Z' - 'A' + 1).Select(n => (char) n));
@@ -37,11 +37,13 @@ namespace RobotFactory
             }
         }
 
+        public int CreatedNamesCount => _createdRobotsNames.Count;
+
         private string GenerateNewName(string pattern)
         {
             var builder = new StringBuilder();
             var timeout = 0;
-            while (!Regex.IsMatch(builder.ToString(), pattern) || CreatedRobotsNames.Contains(builder.ToString()))
+            while (!Regex.IsMatch(builder.ToString(), pattern) || _createdRobotsNames.Contains(builder.ToString()))
             {
                 builder.Clear();
                 builder.Append(string.Concat(Enumerable.Repeat(_availableLetters, 2)
@@ -56,7 +58,7 @@ namespace RobotFactory
             }
 
             var name = builder.ToString();
-            CreatedRobotsNames.Add(name);
+            _createdRobotsNames.Add(name);
             return name;
         }
 
